@@ -43,9 +43,15 @@ function App() {
     };
     const appData = localStorage.getItem('trackers');
     const trackers = appData !== null ? JSON.parse(appData) : [];
-    setTrackers([...trackers, data]);
+    setTrackers((trackers) => [...trackers, data]);
     localStorage.setItem('trackers', JSON.stringify([...trackers, data]));
     setName('');
+  };
+
+  const deleteTracker = (targetId) => {
+    const fiteredTrackers = trackers.filter(({ id }) => id !== targetId);
+    setTrackers(fiteredTrackers);
+    localStorage.setItem(TRACKERS, JSON.stringify(fiteredTrackers));
   };
 
   return (
@@ -56,7 +62,7 @@ function App() {
         onInputHandler={onInputHandler}
         onButtonHandler={addNewTracker}
       />
-      <TrackingList trackers={trackers} />
+      <TrackingList trackers={trackers} onDeleteHandler={deleteTracker} />
     </div>
   );
 }

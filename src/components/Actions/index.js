@@ -5,11 +5,11 @@ import {
   MdRemove as Delete,
 } from 'react-icons/md';
 
-function Actions({ paused }) {
+function Actions({ id, paused, onDeleteHandler }) {
   return (
     <div>
       {paused ? <Pause /> : <Start />}
-      <Delete />
+      <Delete onClick={() => onDeleteHandler(id)} />
     </div>
   );
 }
