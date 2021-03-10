@@ -54,9 +54,25 @@ function App() {
     setTrackers(filteredTrackers);
   };
 
+  const playPause = (id) => {
+    setTrackers((trackers) => {
+      const newTrackers = trackers.map((tracker) => {
+        if (tracker.id === id) {
+          return { ...tracker, paused: !tracker.paused, breakpoint: null };
+        }
+        return tracker;
+      });
+      localStorage.setItem(TRACKERS, JSON.stringify(newTrackers));
+      return newTrackers;
+    });
+  };
+
   const updateStopwatches = () => {
     setTrackers((trackers) => {
       const newTrackers = trackers.map((tracker) => {
+        if (tracker.paused) {
+          return tracker;
+        }
         const oldBreakPoint = moment(tracker.breakpoint);
         const oldDuration = moment.duration(tracker.duration);
         const newBreakPoint = moment();
@@ -85,7 +101,11 @@ function App() {
         onInputHandler={onInputHandler}
         onButtonHandler={addNewTracker}
       />
-      <TrackingList trackers={trackers} onDeleteHandler={deleteTracker} />
+      <TrackingList
+        trackers={trackers}
+        onDeleteHandler={deleteTracker}
+        onPlayPause={playPause}
+      />
     </div>
   );
 }

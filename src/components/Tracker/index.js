@@ -3,7 +3,7 @@ import React from 'react';
 import StopWatch from '../StopWatch';
 import Actions from '../Actions';
 
-function Tracker({ tracker, onDeleteHandler }) {
+function Tracker({ tracker, onDeleteHandler, onPlayPause }) {
   const { id, name, duration, paused } = tracker;
   return (
     <div
@@ -14,7 +14,12 @@ function Tracker({ tracker, onDeleteHandler }) {
     >
       <h3 style={{ flexGrow: 1 }}>{name}</h3>
       <StopWatch duration={duration} />
-      <Actions id={id} paused={paused} onDeleteHandler={onDeleteHandler} />
+      <Actions
+        id={id}
+        paused={paused}
+        onDeleteHandler={onDeleteHandler}
+        onPlayPause={onPlayPause}
+      />
     </div>
   );
 }
