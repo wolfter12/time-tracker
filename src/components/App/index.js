@@ -13,9 +13,16 @@ function App() {
   const [trackers, setTrackers] = useState([]);
 
   useEffect(() => {
-    const localStorageTrackers = localStorage.getItem(TRACKERS);
-    if (localStorageTrackers !== null) {
-      setTrackers(JSON.parse(localStorageTrackers));
+    const appData = localStorage.getItem(TRACKERS);
+    try {
+      if (appData !== null) {
+        const localTrackers = JSON.parse(appData);
+        if (Array.isArray(localTrackers)) {
+          setTrackers(localTrackers);
+        }
+      }
+    } catch (error) {
+      console.error(error);
     }
   }, []);
 
