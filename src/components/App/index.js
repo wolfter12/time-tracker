@@ -49,9 +49,9 @@ function App() {
   };
 
   const deleteTracker = (targetId) => {
-    const fiteredTrackers = trackers.filter(({ id }) => id !== targetId);
-    setTrackers(fiteredTrackers);
-    localStorage.setItem(TRACKERS, JSON.stringify(fiteredTrackers));
+    const filteredTrackers = trackers.filter(({ id }) => id !== targetId);
+    localStorage.setItem(TRACKERS, JSON.stringify(filteredTrackers));
+    setTrackers(filteredTrackers);
   };
 
   return (
