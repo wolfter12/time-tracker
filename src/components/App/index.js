@@ -24,10 +24,11 @@ function App() {
   };
 
   const addNewTracker = () => {
+    const now = moment();
     const data = {
       id: uuidv4(),
-      name: name,
-      breakpoint: moment(),
+      name: name || now.format("ddd, MMM Do YYYY, HH:mm:ss"),
+      breakpoint: now,
       duration: moment
         .duration({
           seconds: 0,
