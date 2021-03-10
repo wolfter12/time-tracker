@@ -25,17 +25,15 @@ function App() {
 
   const addNewTracker = () => {
     const now = moment();
-    const data = {
+    const newTracker = {
       id: uuidv4(),
       name: name || now.format('DD/MM/YYYY HH:mm:ss'),
       breakpoint: now.toJSON(),
       duration: moment.duration().toJSON(),
       paused: false,
     };
-    const appData = localStorage.getItem(TRACKERS);
-    const trackers = appData !== null ? JSON.parse(appData) : [];
-    setTrackers((trackers) => [...trackers, data]);
-    localStorage.setItem(TRACKERS, JSON.stringify([...trackers, data]));
+    localStorage.setItem(TRACKERS, JSON.stringify([...trackers, newTracker]));
+    setTrackers((trackers) => [...trackers, newTracker]);
     setName('');
   };
 
