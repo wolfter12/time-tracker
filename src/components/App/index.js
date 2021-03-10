@@ -54,6 +54,29 @@ function App() {
     setTrackers(filteredTrackers);
   };
 
+  const updateStopwatches = () => {
+    setTrackers((trackers) => {
+      const newTrackers = trackers.map((tracker) => {
+        const oldBreakPoint = moment(tracker.breakpoint);
+        const oldDuration = moment.duration(tracker.duration);
+        const newBreakPoint = moment();
+        const newDuration = oldDuration.add(newBreakPoint.diff(oldBreakPoint));
+        return {
+          ...tracker,
+          breakpoint: newBreakPoint,
+          duration: newDuration,
+        };
+      });
+      localStorage.setItem(TRACKERS, JSON.stringify(newTrackers));
+      return newTrackers;
+    });
+  };
+
+  useEffect(() => {
+    const interval = setInterval(updateStopwatches, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       <Header />
