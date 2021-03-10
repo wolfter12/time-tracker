@@ -27,25 +27,15 @@ function App() {
     const now = moment();
     const data = {
       id: uuidv4(),
-      name: name || now.format("ddd, MMM Do YYYY, HH:mm:ss"),
-      breakpoint: now,
-      duration: moment
-        .duration({
-          seconds: 0,
-          minutes: 0,
-          hours: 0,
-          days: 0,
-          weeks: 0,
-          months: '0',
-          years: '0',
-        })
-        .toJSON(),
+      name: name || now.format('DD/MM/YYYY HH:mm:ss'),
+      breakpoint: now.toJSON(),
+      duration: moment.duration().toJSON(),
       paused: false,
     };
-    const appData = localStorage.getItem('trackers');
+    const appData = localStorage.getItem(TRACKERS);
     const trackers = appData !== null ? JSON.parse(appData) : [];
     setTrackers((trackers) => [...trackers, data]);
-    localStorage.setItem('trackers', JSON.stringify([...trackers, data]));
+    localStorage.setItem(TRACKERS, JSON.stringify([...trackers, data]));
     setName('');
   };
 
@@ -80,8 +70,8 @@ function App() {
         const newDuration = oldDuration.add(newBreakPoint.diff(oldBreakPoint));
         return {
           ...tracker,
-          breakpoint: newBreakPoint,
-          duration: newDuration,
+          breakpoint: newBreakPoint.toJSON(),
+          duration: newDuration.toJSON(),
         };
       });
       localStorage.setItem(TRACKERS, JSON.stringify(newTrackers));
