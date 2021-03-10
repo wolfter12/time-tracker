@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StopWatch from '../StopWatch';
+import Stopwatch from '../Stopwatch';
 import Actions from '../Actions';
 
 function Tracker({ tracker, onDeleteHandler, onPlayPause }) {
@@ -13,7 +13,7 @@ function Tracker({ tracker, onDeleteHandler, onPlayPause }) {
       }}
     >
       <h3 style={{ flexGrow: 1 }}>{name}</h3>
-      <StopWatch duration={duration} />
+      <Stopwatch duration={duration} />
       <Actions
         id={id}
         paused={paused}

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-function StopWatch({ duration }) {
+function Stopwatch({ duration }) {
   const currentDuration = moment.duration(duration);
   const seconds = `00${currentDuration.get('seconds')}`.slice(-2);
   const minutes = `00${currentDuration.get('minutes')}`.slice(-2);
@@ -13,4 +13,4 @@ function StopWatch({ duration }) {
   );
 }
 
-export default StopWatch;
+export default Stopwatch;
