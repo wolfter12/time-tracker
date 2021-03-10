@@ -52,35 +52,35 @@ function App() {
 
   const playPause = (id) => {
     setTrackers((trackers) => {
-      const newTrackers = trackers.map((tracker) => {
+      const updatedTrackers = trackers.map((tracker) => {
         if (tracker.id === id) {
           return { ...tracker, paused: !tracker.paused, breakpoint: null };
         }
         return tracker;
       });
-      localStorage.setItem(TRACKERS, JSON.stringify(newTrackers));
-      return newTrackers;
+      localStorage.setItem(TRACKERS, JSON.stringify(updatedTrackers));
+      return updatedTrackers;
     });
   };
 
   const updateStopwatches = () => {
     setTrackers((trackers) => {
-      const newTrackers = trackers.map((tracker) => {
+      const updatedTrackers = trackers.map((tracker) => {
         if (tracker.paused) {
           return tracker;
         }
-        const oldBreakPoint = moment(tracker.breakpoint);
-        const oldDuration = moment.duration(tracker.duration);
-        const newBreakPoint = moment();
-        const newDuration = oldDuration.add(newBreakPoint.diff(oldBreakPoint));
+        const prevBreakpoint = moment(tracker.breakpoint);
+        const prevDuration = moment.duration(tracker.duration);
+        const nextBreakpoint = moment();
+        const nextDuration = prevDuration.add(nextBreakpoint.diff(prevBreakpoint));
         return {
           ...tracker,
-          breakpoint: newBreakPoint.toJSON(),
-          duration: newDuration.toJSON(),
+          breakpoint: nextBreakpoint.toJSON(),
+          duration: nextDuration.toJSON(),
         };
       });
-      localStorage.setItem(TRACKERS, JSON.stringify(newTrackers));
-      return newTrackers;
+      localStorage.setItem(TRACKERS, JSON.stringify(updatedTrackers));
+      return updatedTrackers;
     });
   };
 
