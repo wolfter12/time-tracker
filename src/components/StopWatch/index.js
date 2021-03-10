@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import 'moment-duration-format';
 
 function StopWatch({ duration }) {
   const currentDuration = moment.duration(duration);
