@@ -12,6 +12,11 @@ const trackerReducer = (state = initialState, action) => {
         ...state,
         items: action.payload,
       };
+    case ADD_TRACKER:
+      return {
+        ...state,
+        item: action.payload,
+      };
     default:
       return state;
   }

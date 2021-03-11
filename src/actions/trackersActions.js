@@ -15,13 +15,14 @@ export const getTrackers = () => (dispatch) => {
         });
       }
     }
-
-    // const localTrackers = JSON.parse(localStorage.getItem(TRACKERS));
-    // dispatch({
-    //   type: GET_TRACKERS,
-    //   payload: localTrackers,
-    // });
   } catch (error) {
     console.error(error);
   }
+};
+
+export const addTracker = (trackerData) => (dispatch) => {
+  dispatch({
+    type: ADD_TRACKER,
+    payload: trackerData,
+  });
 };

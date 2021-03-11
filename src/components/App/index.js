@@ -104,6 +104,7 @@ function App() {
         onDeleteHandler={deleteTracker}
         onPlayPause={playPause}
       /> */}
+      <TrackerInput />
       <TrackingList />
     </div>
   );
