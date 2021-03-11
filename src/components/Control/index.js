@@ -11,6 +11,7 @@ import {
 } from 'react-icons/md';
 
 function Control({ id, paused, breakpoint, duration }) {
+  
   const dispatch = useDispatch();
 
   const deleteTrackerHandler = () => {
