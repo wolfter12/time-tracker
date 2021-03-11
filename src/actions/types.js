@@ -1,0 +1,3 @@
+export const ADD_TRACKER = 'ADD_TRACKER';
+export const DELETE_TRACKER = 'DELETE_TRACKER';
+export const GET_TRACKERS = 'GET_TRACKERS';
