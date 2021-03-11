@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { changeStopwatchState, deleteTracker } from '../../actions/trackersActions';
+import {
+  changeStopwatchState,
+  deleteTracker,
+} from '../../actions/trackersActions';
 import {
   MdPauseCircleOutline as Pause,
   MdPlayCircleOutline as Start,
