@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTracker } from '../../actions/trackersActions';
 import { MdPlayCircleOutline as Start } from 'react-icons/md';
-// import PropTypes from 'prop-types';
-
-// const TRACKERS = 'trackers';
 
 function TrackerInput() {
   const [name, setName] = useState('');
@@ -26,9 +23,5 @@ function TrackerInput() {
     </div>
   );
 }
-
-// TrackerInput.propTypes = {
-//   addTracker: PropTypes.func.isRequired,
-// };
 
 export default TrackerInput;
