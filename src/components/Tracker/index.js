@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Stopwatch from '../Stopwatch';
-import Actions from '../Actions';
+import Control from '../Control';
 
 function Tracker({ tracker, onDeleteHandler, onPlayPause }) {
   const { id, name, duration, paused } = tracker;
@@ -14,7 +14,7 @@ function Tracker({ tracker, onDeleteHandler, onPlayPause }) {
     >
       <h3 style={{ flexGrow: 1 }}>{name}</h3>
       <Stopwatch duration={duration} />
-      <Actions
+      <Control
         id={id}
         paused={paused}
         onDeleteHandler={onDeleteHandler}
