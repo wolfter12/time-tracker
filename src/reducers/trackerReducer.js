@@ -4,7 +4,6 @@ import {
   CHANGE_STOPWATCH_STATE,
   UPDATE_STOPWATCHES,
 } from '../actions/types';
-import moment from 'moment';
 
 const initialState = [];
 
@@ -28,22 +27,7 @@ const trackerReducer = (state = initialState, action) => {
         return tracker;
       });
     case UPDATE_STOPWATCHES:
-      return state.map((tracker) => {
-        if (tracker.paused) {
-          return tracker;
-        }
-        const prevBreakpoint = moment(tracker.breakpoint);
-        const prevDuration = moment.duration(tracker.duration);
-        const nextBreakpoint = moment();
-        const nextDuration = prevDuration.add(
-          nextBreakpoint.diff(prevBreakpoint)
-        );
-        return {
-          ...tracker,
-          breakpoint: nextBreakpoint.toJSON(),
-          duration: nextDuration.toJSON(),
-        };
-      });
+      return action.updatedTrackers;
     default:
       return state;
   }

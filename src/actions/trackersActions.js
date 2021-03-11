@@ -35,23 +35,38 @@ export const changeStopwatchState = (id, paused, breakpoint, duration) => (
   dispatch
 ) => {
   const isPaused = !paused; // after on start/stop button clicked
-  const currentBreakpoint = moment();
-  const currentDuration = isPaused
-    ? moment.duration(duration).add(currentBreakpoint.diff(breakpoint))
+  const nextBreakpoint = moment();
+  const nextDuration = isPaused
+    ? moment.duration(duration).add(nextBreakpoint.diff(breakpoint))
     : moment.duration(duration);
   dispatch({
     type: CHANGE_STOPWATCH_STATE,
     payload: {
       id,
       paused: isPaused,
-      breakpoint: currentBreakpoint.toJSON(),
-      duration: currentDuration.toJSON(),
+      breakpoint: nextBreakpoint.toJSON(),
+      duration: nextDuration.toJSON(),
     },
   });
 };
 
-export const updateStopwatches = () => (dispatch) => {
+export const updateStopwatches = () => (dispatch, getState) => {
+  const updatedTrackers = getState().trackers.map((tracker) => {
+    if (tracker.paused) {
+      return tracker;
+    }
+    const prevBreakpoint = moment(tracker.breakpoint);
+    const prevDuration = moment.duration(tracker.duration);
+    const nextBreakpoint = moment();
+    const nextDuration = prevDuration.add(nextBreakpoint.diff(prevBreakpoint));
+    return {
+      ...tracker,
+      breakpoint: nextBreakpoint.toJSON(),
+      duration: nextDuration.toJSON(),
+    };
+  });
   dispatch({
     type: UPDATE_STOPWATCHES,
+    updatedTrackers,
   });
 };
