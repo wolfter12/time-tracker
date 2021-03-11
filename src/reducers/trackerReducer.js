@@ -17,10 +17,12 @@ const trackerReducer = (state = initialState, action) => {
     case CHANGE_STOPWATCH_STATE:
       return state.map((tracker) => {
         if (tracker.id === action.payload.id) {
+          const { paused, breakpoint, duration } = action.payload;
           return {
             ...tracker,
-            paused: action.payload.paused,
-            breakpoint: action.payload.breakpoint,
+            paused,
+            breakpoint,
+            duration,
           };
         }
         return tracker;

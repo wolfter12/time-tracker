@@ -1,14 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteTracker } from '../../actions/trackersActions';
-import { changeStopwatchState } from '../../actions/controlActions';
+import { changeStopwatchState, deleteTracker } from '../../actions/trackersActions';
 import {
   MdPauseCircleOutline as Pause,
   MdPlayCircleOutline as Start,
   MdRemove as Delete,
 } from 'react-icons/md';
 
-function Control({ id, paused }) {
+function Control({ id, paused, breakpoint, duration }) {
   const dispatch = useDispatch();
 
   const deleteTrackerHandler = () => {
@@ -16,7 +15,7 @@ function Control({ id, paused }) {
   };
 
   const stopwatchStateHandler = () => {
-    dispatch(changeStopwatchState(id, paused));
+    dispatch(changeStopwatchState(id, paused, breakpoint, duration));
   };
 
   // TODO: Optimize code duplication

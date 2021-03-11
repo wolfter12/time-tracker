@@ -31,18 +31,28 @@ export const deleteTracker = (id) => (dispatch) => {
   });
 };
 
-export const changeStopwatchState = (id, paused) => (dispatch) => {
+export const changeStopwatchState = (id, paused, breakpoint, duration) => (
+  dispatch
+) => {
+  console.log('changeStopwatchState');
+  const isPaused = !paused; // after on start/stop button clicked
+  const currentBreakpoint = moment();
+  const currentDuration = isPaused
+    ? moment.duration(duration).add(currentBreakpoint.diff(breakpoint))
+    : moment.duration(duration);
   dispatch({
     type: CHANGE_STOPWATCH_STATE,
     payload: {
       id,
-      paused: !paused,
-      breakpoint: paused ? moment().toJSON() : null,
+      paused: isPaused,
+      breakpoint: currentBreakpoint.toJSON(),
+      duration: currentDuration.toJSON(),
     },
   });
 };
 
 export const updateStopwatches = () => (dispatch) => {
+  console.log('updating');
   dispatch({
     type: UPDATE_STOPWATCHES,
   });
