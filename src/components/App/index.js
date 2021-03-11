@@ -72,7 +72,9 @@ function App() {
         const prevBreakpoint = moment(tracker.breakpoint);
         const prevDuration = moment.duration(tracker.duration);
         const nextBreakpoint = moment();
-        const nextDuration = prevDuration.add(nextBreakpoint.diff(prevBreakpoint));
+        const nextDuration = prevDuration.add(
+          nextBreakpoint.diff(prevBreakpoint)
+        );
         return {
           ...tracker,
           breakpoint: nextBreakpoint.toJSON(),
@@ -92,7 +94,7 @@ function App() {
   return (
     <div>
       <Header />
-      <TrackerInput
+      {/* <TrackerInput
         trackerName={name}
         onInputHandler={onInputHandler}
         onButtonHandler={addNewTracker}
@@ -101,7 +103,8 @@ function App() {
         trackers={trackers}
         onDeleteHandler={deleteTracker}
         onPlayPause={playPause}
-      />
+      /> */}
+      <TrackingList />
     </div>
   );
 }
