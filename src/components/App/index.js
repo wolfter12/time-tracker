@@ -63,33 +63,33 @@ function App() {
     });
   };
 
-  const updateStopwatches = () => {
-    setTrackers((trackers) => {
-      const updatedTrackers = trackers.map((tracker) => {
-        if (tracker.paused) {
-          return tracker;
-        }
-        const prevBreakpoint = moment(tracker.breakpoint);
-        const prevDuration = moment.duration(tracker.duration);
-        const nextBreakpoint = moment();
-        const nextDuration = prevDuration.add(
-          nextBreakpoint.diff(prevBreakpoint)
-        );
-        return {
-          ...tracker,
-          breakpoint: nextBreakpoint.toJSON(),
-          duration: nextDuration.toJSON(),
-        };
-      });
-      localStorage.setItem(TRACKERS, JSON.stringify(updatedTrackers));
-      return updatedTrackers;
-    });
-  };
+  // const updateStopwatches = () => {
+  //   setTrackers((trackers) => {
+  //     const updatedTrackers = trackers.map((tracker) => {
+  //       if (tracker.paused) {
+  //         return tracker;
+  //       }
+  //       const prevBreakpoint = moment(tracker.breakpoint);
+  //       const prevDuration = moment.duration(tracker.duration);
+  //       const nextBreakpoint = moment();
+  //       const nextDuration = prevDuration.add(
+  //         nextBreakpoint.diff(prevBreakpoint)
+  //       );
+  //       return {
+  //         ...tracker,
+  //         breakpoint: nextBreakpoint.toJSON(),
+  //         duration: nextDuration.toJSON(),
+  //       };
+  //     });
+  //     localStorage.setItem(TRACKERS, JSON.stringify(updatedTrackers));
+  //     return updatedTrackers;
+  //   });
+  // };
 
-  useEffect(() => {
-    const interval = setInterval(updateStopwatches, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(updateStopwatches, 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div>
