@@ -16,9 +16,22 @@ function TrackerInput() {
     dispatch(addTracker(name));
     setName('');
   };
+
+  const handleKeyDown = (e) => {
+    console.log('key pressed');
+    if (e.key === 'Enter') {
+      dispatch(addTracker(name));
+    }
+  };
+
   return (
     <div>
-      <input type="text" value={name} onInput={onInputHandler} />
+      <input
+        type="text"
+        value={name}
+        onInput={onInputHandler}
+        onKeyDown={handleKeyDown}
+      />
       <Start onClick={onButtonHandler} />
     </div>
   );
