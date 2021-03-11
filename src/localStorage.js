@@ -1,24 +1,24 @@
 const TRACKERS = 'trackers';
 
-export const loadState = () => {
+export const loadData = () => {
   try {
-    const serializedState = localStorage.getItem(TRACKERS);
-    if (serializedState !== null) {
-      const parsedState = JSON.parse(serializedState);
-      if (Array.isArray(parsedState)) {
-        return { trackers: { items: parsedState } };
+    const serializedData = localStorage.getItem(TRACKERS);
+    if (serializedData !== null) {
+      const parsedData = JSON.parse(serializedData);
+      if (Array.isArray(parsedData)) {
+        return parsedData;
       }
     }
-    return {};
+    return [];
   } catch (err) {
-    return {};
+    return [];
   }
 };
 
-export const saveState = (state) => {
+export const saveData = (trackers) => {
   try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem(TRACKERS, serializedState);
+    const serializedData = JSON.stringify(trackers);
+    localStorage.setItem(TRACKERS, serializedData);
   } catch (err) {
     // Ignore write errors.
   }

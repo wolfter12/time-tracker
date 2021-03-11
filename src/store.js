@@ -1,18 +1,20 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { loadState, saveState } from './localStorage';
+import { loadData, saveData } from './localStorage';
 
-const persistedState = loadState();
+const persistedData = loadData();
 
-// const initialState = {};
+const initialState = {
+  trackers: persistedData,
+};
 
 const middleware = [thunk];
 
 // as a backup use initialState above instead persistedState
 const store = createStore(
   rootReducer,
-  persistedState,
+  initialState,
   compose(
     applyMiddleware(...middleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -20,8 +22,8 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  const trackers = store.getState().trackers.items || [];
-  saveState([...trackers]);
+  const trackers = store.getState().trackers || [];
+  saveData([...trackers]);
 });
 
 export default store;

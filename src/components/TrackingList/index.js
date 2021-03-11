@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Tracker from '../Tracker';
 
 function TrackingList() {
-  const trackers = useSelector((state) => state.trackers.items);
+  const trackers = useSelector((state) => state.trackers);
 
   const trackersList = trackers.map((tracker) => {
     return <Tracker key={tracker.id} tracker={tracker} />;
