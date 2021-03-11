@@ -11,6 +11,11 @@ const trackerReducer = (state = initialState, action) => {
         ...state,
         items: [action.payload, ...state.items],
       };
+    case DELETE_TRACKER:
+      return {
+        ...state,
+        items: state.items.filter((tracker) => tracker.id !== action.id),
+      };
     default:
       return state;
   }

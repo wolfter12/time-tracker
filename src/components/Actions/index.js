@@ -1,14 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteTracker } from '../../actions/trackersActions';
 import {
   MdPauseCircleOutline as Pause,
   MdPlayCircleOutline as Start,
   MdRemove as Delete,
 } from 'react-icons/md';
 
-function Actions({ id, paused, onDeleteHandler, onPlayPause }) {
+function Actions({ id, paused, onPlayPause }) {
   const onButtonClick = () => {
     onPlayPause(id);
   };
+
+  const dispatch = useDispatch();
+
+  const onDeleteHandler = () => {
+    dispatch(deleteTracker(id));
+  };
+
   return (
     <div>
       {paused ? (
@@ -16,7 +25,7 @@ function Actions({ id, paused, onDeleteHandler, onPlayPause }) {
       ) : (
         <Pause onClick={onButtonClick} />
       )}
-      <Delete onClick={() => onDeleteHandler(id)} />
+      <Delete onClick={onDeleteHandler} />
     </div>
   );
 }

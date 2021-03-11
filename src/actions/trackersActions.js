@@ -2,8 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 import { ADD_TRACKER, DELETE_TRACKER } from './types';
 
-const TRACKERS = 'trackers';
-
 export const addTracker = (name) => (dispatch) => {
   const now = moment();
   const newTracker = {
@@ -16,5 +14,12 @@ export const addTracker = (name) => (dispatch) => {
   dispatch({
     type: ADD_TRACKER,
     payload: newTracker,
+  });
+};
+
+export const deleteTracker = (id) => (dispatch) => {
+  dispatch({
+    type: DELETE_TRACKER,
+    id,
   });
 };
