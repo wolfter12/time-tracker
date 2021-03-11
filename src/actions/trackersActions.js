@@ -34,7 +34,6 @@ export const deleteTracker = (id) => (dispatch) => {
 export const changeStopwatchState = (id, paused, breakpoint, duration) => (
   dispatch
 ) => {
-  console.log('changeStopwatchState');
   const isPaused = !paused; // after on start/stop button clicked
   const currentBreakpoint = moment();
   const currentDuration = isPaused
@@ -52,7 +51,6 @@ export const changeStopwatchState = (id, paused, breakpoint, duration) => (
 };
 
 export const updateStopwatches = () => (dispatch) => {
-  console.log('updating');
   dispatch({
     type: UPDATE_STOPWATCHES,
   });

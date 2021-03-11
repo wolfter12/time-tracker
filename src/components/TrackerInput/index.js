@@ -18,7 +18,6 @@ function TrackerInput() {
   };
 
   const handleKeyDown = (e) => {
-    console.log('key pressed');
     if (e.key === 'Enter') {
       dispatch(addTracker(name));
     }
