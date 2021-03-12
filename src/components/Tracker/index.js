@@ -1,19 +1,15 @@
 import React from 'react';
-import Stopwatch from '../Stopwatch';
-import Control from '../Control';
+import Duration from '../Duration';
+import TrackerControl from '../TrackerControl';
+import style from './Tracker.module.css';
 
 function Tracker({ tracker }) {
   const { id, name, paused, breakpoint, duration } = tracker;
-  const flexBox = {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  };
-  const body = { flexGrow: 1 };
   return (
-    <div style={flexBox}>
-      <h3 style={body}>{name}</h3>
-      <Stopwatch duration={duration} />
-      <Control
+    <div className={style.tracker}>
+      <h3 className={style.name}>{name}</h3>
+      <Duration duration={duration} />
+      <TrackerControl
         id={id}
         paused={paused}
         breakpoint={breakpoint}
