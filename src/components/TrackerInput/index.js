@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTracker } from '../../actions/trackersActions';
-import { MdPlayCircleOutline as Start } from 'react-icons/md';
+import { MdPlayCircleFilled as Start } from 'react-icons/md';
+import { IconContext } from 'react-icons';
+import style from './TrackerInput.module.css';
 
 function TrackerInput() {
   const [name, setName] = useState('');
@@ -24,14 +26,26 @@ function TrackerInput() {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={name}
-        onInput={onInputHandler}
-        onKeyDown={handleKeyDown}
-      />
-      <Start onClick={onButtonHandler} />
+    <div className={style['tracker-input']}>
+      <form>
+        <input
+          type="text"
+          value={name}
+          onInput={onInputHandler}
+          onKeyDown={handleKeyDown}
+          placeholder="Enter tracker name"
+        />
+        {/* TODO: Add pointer on hover/focus */}
+        <div className={style.start} onClick={onButtonHandler}>
+          <IconContext.Provider
+            value={{
+              className: style['react-icon'],
+            }}
+          >
+            <Start />
+          </IconContext.Provider>
+        </div>
+      </form>
     </div>
   );
 }
