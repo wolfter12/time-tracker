@@ -6,6 +6,8 @@ import Header from '../Header';
 import TrackerInput from '../TrackerInput';
 import TrackingList from '../TrackingList';
 
+import style from './App.module.css';
+
 function App() {
   const dispatch = useDispatch();
   const update = () => {
@@ -18,7 +20,7 @@ function App() {
     };
   }, []);
   return (
-    <div>
+    <div className={style.App}>
       <Header />
       <TrackerInput />
       <TrackingList />
