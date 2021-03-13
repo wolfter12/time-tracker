@@ -1,17 +1,26 @@
 .tracker-input {
   margin-bottom: 26px;
+  padding: 0 12px;
 }
 
-form {
+@media screen and (min-width: 560px) {
+  .tracker-input {
+    padding: 0;
+  }
+}
+
+.input-container {
   height: 46px;
   display: flex;
   flex-direction: row;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 23px;
-  padding-left: 20px;
 }
 
+/* FIXME: input height */
+/* TODO: add input text formatting */
 input {
+  margin-left: 20px;
   flex-grow: 2;
   border: none;
 }
@@ -23,10 +32,12 @@ input:focus {
 .start {
   display: inline-flex;
   align-self: center;
+  cursor: pointer;
 }
 
 .react-icon {
   color: #3faf6c;
-  height: 48px;
-  width: 48px;
+  height: 46px;
+  width: 46px;
+  vertical-align: top;
 }

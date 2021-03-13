@@ -27,7 +27,7 @@ function TrackerInput() {
 
   return (
     <div className={style['tracker-input']}>
-      <form>
+      <div className={style['input-container']}>
         <input
           type="text"
           value={name}
@@ -35,7 +35,6 @@ function TrackerInput() {
           onKeyDown={handleKeyDown}
           placeholder="Enter tracker name"
         />
-        {/* TODO: Add pointer on hover/focus */}
         <div className={style.start} onClick={onButtonHandler}>
           <IconContext.Provider
             value={{
@@ -45,7 +44,7 @@ function TrackerInput() {
             <Start />
           </IconContext.Provider>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
