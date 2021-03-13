@@ -3,15 +3,35 @@
   justify-content: flex-end;
   align-items: center;
   height: 60px;
-  border-bottom: 1px solid #707070;
-  padding: 16px 7px 15px 20px;
+  padding: 0 12px;
+  font-size: 17px;
+  line-height: 22px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .tracker:first-child {
-  border-top: 1px solid #707070;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 560px) {
+  .tracker {
+    padding: 0 20px;
+  }
 }
 
 .name {
-  flex-grow: 1;
+  font-size: 17px;
   font-weight: 700;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.running {
+  color: #3faf6c;
+}
+
+.stopped {
+  color: #000;
 }

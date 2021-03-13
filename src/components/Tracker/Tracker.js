@@ -5,10 +5,11 @@ import style from './Tracker.module.css';
 
 function Tracker({ tracker }) {
   const { id, name, paused, breakpoint, duration } = tracker;
+  const color = paused ? style.stopped : style.running;
   return (
     <div className={style.tracker}>
-      <h3 className={style.name}>{name}</h3>
-      <Duration duration={duration} />
+      <h3 className={`${style.name} ${color}`}>{name}</h3>
+      <Duration duration={duration} paused={paused} />
       <TrackerControl
         id={id}
         paused={paused}
