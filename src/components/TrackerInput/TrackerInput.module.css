@@ -1,23 +1,17 @@
-.tracker-input {
-  margin-bottom: 26px;
-  padding: 0 12px;
-}
-
-@media screen and (min-width: 560px) {
-  .tracker-input {
-    padding: 0;
-  }
-}
-
 .input-container {
   height: 46px;
   display: flex;
-  flex-direction: row;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 23px;
+  margin: 0 12px 26px;
 }
 
-/* FIXME: input height */
+@media screen and (min-width: 560px) {
+  .input-container {
+    margin: 0 0 26px;
+  }
+}
+
 /* TODO: add input text formatting */
 input {
   margin-left: 20px;
