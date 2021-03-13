@@ -5,7 +5,7 @@ import style from './TrackerControl.module.css';
 
 function TrackerControl({ id, paused, breakpoint, duration }) {
   return (
-    <div className={style.Control}>
+    <div className={style.control}>
       <StopwatchControlButton
         id={id}
         paused={paused}
