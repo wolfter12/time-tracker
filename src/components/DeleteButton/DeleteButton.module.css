@@ -1,0 +1,21 @@
+.btn {
+  margin-left: 13px;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-flex;
+  align-self: center;
+}
+.icon svg {
+  height: 30px;
+  width: 30px;
+}
+.icon.baseline svg {
+  top: 0.125em;
+  position: relative;
+}
+
+.react-icon {
+  color: #d2697a;
+}
