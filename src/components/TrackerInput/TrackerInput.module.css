@@ -29,9 +29,8 @@ input:focus {
   cursor: pointer;
 }
 
-.react-icon {
+.start svg {
   color: #3faf6c;
   height: 46px;
   width: 46px;
-  vertical-align: top;
 }
