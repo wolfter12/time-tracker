@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateStopwatches } from '../../actions/trackersActions';
-
+import { updateStopwatches } from '../../actions/updateActions';
 import Header from '../Header';
 import TrackerInput from '../TrackerInput';
 import TrackingList from '../TrackingList';
-
 import style from './App.module.css';
 
 function App() {
@@ -13,12 +11,14 @@ function App() {
   const update = () => {
     dispatch(updateStopwatches());
   };
+
   useEffect(() => {
     const intervalId = setInterval(update, 1000);
     return () => {
       clearInterval(intervalId);
     };
   }, []);
+
   return (
     <div className={style.app}>
       <Header />
