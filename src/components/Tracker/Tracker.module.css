@@ -35,3 +35,7 @@
 .stopped {
   color: #000;
 }
+
+.bg-running {
+  background-color: #fdfdf6;
+}
