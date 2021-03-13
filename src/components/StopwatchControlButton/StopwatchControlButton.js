@@ -6,7 +6,7 @@ import {
   MdPlayCircleOutline as Start,
 } from 'react-icons/md';
 import { IconContext } from 'react-icons';
-import style from './StopwatchControlButton.module.css';
+import style, { icon, baseline } from './StopwatchControlButton.module.css';
 
 function StopwatchControlButton({ id, paused, breakpoint, duration }) {
   const dispatch = useDispatch();
@@ -20,10 +20,12 @@ function StopwatchControlButton({ id, paused, breakpoint, duration }) {
     <Pause onClick={stopwatchStateHandler} />
   );
   return (
-    <div className={style['stopwatch-control']}>
-      <IconContext.Provider value={{ className: style['control-icon'] }}>
-        {stopwatchStateControl}
-      </IconContext.Provider>
+    <div className={style.btn}>
+      <div className={`${icon} ${baseline}`}>
+        <IconContext.Provider value={{ className: style['react-icon'] }}>
+          {stopwatchStateControl}
+        </IconContext.Provider>
+      </div>
     </div>
   );
 }
