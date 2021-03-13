@@ -1,4 +1,13 @@
-.stopwatch span {
+span {
   font-size: 17px;
   font-weight: 700;
+  margin-left: 8px;
+}
+
+.running {
+  color: #3faf6c;
+}
+
+.stopped {
+  color: #000;
 }
