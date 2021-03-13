@@ -12,9 +12,12 @@ function Duration({ duration, paused }) {
     : hoursTotal.length === 1
       ? `0${hoursTotal}`
       : '00';
-  const color = paused ? style.stopped : style.running;
+
+  const { stopwatch, stopped, running } = style;
+  const color = paused ? stopped : running;
+  
   return (
-    <div className={`${style.stopwatch} ${color}`}>
+    <div className={`${stopwatch} ${color}`}>
       <span>{`${hours}:${minutes}:${seconds}`}</span>
     </div>
   );
