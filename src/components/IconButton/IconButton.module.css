@@ -1,0 +1,11 @@
+.icon {
+  margin-left: 13px;
+  display: inline-flex;
+  /* align-self: center; */
+  cursor: pointer;
+}
+
+.icon svg {
+  height: 30px;
+  width: 30px;
+}
