@@ -1,0 +1,9 @@
+.trackers {
+  margin-bottom: 54px;
+}
+
+@media screen and (min-width: 560px) {
+  .trackers {
+    margin-bottom: 71px;
+  }
+}
