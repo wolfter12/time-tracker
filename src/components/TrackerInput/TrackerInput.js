@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTracker } from '../../actions/trackersActions';
 import { MdPlayCircleFilled as Start } from 'react-icons/md';
-import { IconContext } from 'react-icons';
 import style from './TrackerInput.module.css';
 
 function TrackerInput() {
@@ -41,13 +40,7 @@ function TrackerInput() {
         ref={inputEl}
       />
       <div className={style.start} onClick={onButtonHandler}>
-        <IconContext.Provider
-          value={{
-            className: style['react-icon'],
-          }}
-        >
-          <Start />
-        </IconContext.Provider>
+        <Start />
       </div>
     </div>
   );
