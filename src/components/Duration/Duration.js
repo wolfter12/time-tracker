@@ -6,8 +6,12 @@ function Duration({ duration, paused }) {
   const currentDuration = moment.duration(duration);
   const seconds = `00${currentDuration.get('seconds')}`.slice(-2);
   const minutes = `00${currentDuration.get('minutes')}`.slice(-2);
-  // TODO: Format hours output more precisely
-  const hours = `00${Math.floor(currentDuration.asHours())}`.slice(-2);
+  const hoursTotal = Math.floor(currentDuration.asHours()).toString();
+  const hours = hoursTotal.length >= 2
+    ? hoursTotal
+    : hoursTotal.length === 1
+      ? `0${hoursTotal}`
+      : '00';
   const color = paused ? style.stopped : style.running;
   return (
     <div className={`${style.stopwatch} ${color}`}>
