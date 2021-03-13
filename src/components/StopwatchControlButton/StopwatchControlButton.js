@@ -13,17 +13,12 @@ function StopwatchControlButton({ id, paused, breakpoint, duration }) {
   const stopwatchStateHandler = () => {
     dispatch(changeStopwatchState(id, paused, breakpoint, duration));
   };
-  // FIXME: code duplication
-  const stopwatchStateControl = paused ? (
-    <Start onClick={stopwatchStateHandler} />
-  ) : (
-    <Pause onClick={stopwatchStateHandler} />
-  );
+  const stateIcon = paused ? <Start /> : <Pause />;
   return (
     <div className={style.btn}>
-      <div className={`${icon} ${baseline}`}>
+      <div className={`${icon} ${baseline}`} onClick={stopwatchStateHandler}>
         <IconContext.Provider value={{ className: style['react-icon'] }}>
-          {stopwatchStateControl}
+          {stateIcon}
         </IconContext.Provider>
       </div>
     </div>
