@@ -20,7 +20,7 @@ function App() {
     };
   }, []);
   return (
-    <div className={style.App}>
+    <div className={style.app}>
       <Header />
       <TrackerInput />
       <TrackingList />
