@@ -18,7 +18,8 @@ function TrackerInput() {
     setName(e.target.value);
   };
 
-  const onButtonHandler = () => {
+  const onButtonHandler = (e) => {
+    e.stopPropagation();
     dispatch(addTracker(name));
     setName('');
   };
